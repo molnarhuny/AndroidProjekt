@@ -11,15 +11,15 @@ import com.example.projekt.repository.TrackerRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class UserListViewModelFactory(
+class ActivitiesViewModelFactory(
     private val repository: TrackerRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return UserListViewModel( repository) as T
+        return ActivitiesViewModel(repository) as T
     }
 }
 
-class UserListViewModel(val repository: TrackerRepository) : ViewModel() {
+class ActivitiesViewModel(val repository: TrackerRepository) : ViewModel() {
     var userList = MutableLiveData<List<User>>()
 
     fun readUsers() {
