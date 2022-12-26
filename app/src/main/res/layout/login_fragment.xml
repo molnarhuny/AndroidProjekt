@@ -7,18 +7,19 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/final_background"
-    tools:context=".FirstFragment">
+    tools:context=".api.fragments.LoginFragment">
 
     <ImageView
         android:id="@+id/track"
         android:layout_width="243dp"
         android:layout_height="107dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/three_ready_logo" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="bottom"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:cardBackgroundColor="@color/blue_background"
@@ -28,9 +29,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="24dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -49,28 +49,32 @@
                     android:id="@+id/email_input_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name" />
+                    android:background="#87d3f8"
+                    android:hint="Enter your e-mail" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/password_input_field"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="20dp">
+    
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/password_input_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#87d3f8"
+                        android:inputType="textPassword"
+                        android:hint="Enter your password" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/button_first"
-                android:layout_width="wrap_content"
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:orientation="vertical"
                 android:text="@string/sign_in_button_text" />
 
         </LinearLayout>
