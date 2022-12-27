@@ -2,23 +2,32 @@ package com.example.projekt
 
 import android.os.Bundle
 import android.util.Log
-import com.google.android.material.snackbar.Snackbar
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import com.example.projekt.api.fragments.ActivitiesFragment
+import com.example.projekt.api.fragments.GroupsFragment
+import com.example.projekt.api.fragments.ProfileFragment
+import com.example.projekt.api.fragments.TasksFragment
 import com.example.projekt.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val controller = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_host_fragment)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+        // hide the navigation bar on the loginscreen
+        hideNavBars(bottomNavigationView, navController)
 
         // Read data from preferences
         val prefs = this.getPreferences(MODE_PRIVATE)
@@ -32,8 +41,42 @@ class MainActivity : AppCompatActivity() {
             MyApplication.token = token!!
             MyApplication.email = prefs.getString("email","")!!
 
-            controller.navigate(R.id.ActivitiesFragment)
+            navController.navigate(R.id.ActivitiesFragment)
+            fragmentNavigator()
         }
     }
 
+    private fun fragmentNavigator() {
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.activities -> replaceFragment(ActivitiesFragment())
+                R.id.activities -> replaceFragment(ProfileFragment())
+                R.id.activities -> replaceFragment(TasksFragment())
+                R.id.activities -> replaceFragment(GroupsFragment())
+            }
+            true
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
+    }
+
+    private fun hideNavBars(bottomNavigationView: BottomNavigationView, navController: NavController) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.login_fragment -> {
+                    bottomNavigationView.visibility = View.GONE
+                }
+                else -> {
+                    bottomNavigationView.visibility = View.VISIBLE
+                }
+            }
+        }
+
+    }
 }

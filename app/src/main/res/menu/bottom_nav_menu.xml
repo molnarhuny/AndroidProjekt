@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.projekt.MainActivity">
+
+    <item
+        android:id="@+id/activities"
+        android:title="Activities"
+        android:icon="@drawable/activities" />
+    <item
+        android:id="@+id/tasks"
+        android:title="Tasks"
+        android:icon="@drawable/tasks" />
+    <item
+        android:id="@+id/groups"
+        android:title="Groups"
+        android:icon="@drawable/groups" />
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/person" />
+</menu>
