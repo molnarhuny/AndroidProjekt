@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/task"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".api.fragments.TasksFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="168px"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textview_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tasks Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="center" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/avatar_photo" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:text="My Tasks"
+            android:textSize="60px" />
 
-</FrameLayout>
+
+        <ImageButton
+            android:layout_width="60px"
+            android:layout_height="60px"
+            android:layout_margin="6dp"
+            android:src="@drawable/plus_icon"/>
+        <ImageButton
+            android:layout_width="60px"
+            android:layout_height="60px"
+            android:layout_margin="6dp"
+            android:src="@drawable/search_icon"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasks_recycle_view"
+            tools:listitem="@layout/tasks_view"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+
+    </FrameLayout>
+
+</LinearLayout>
