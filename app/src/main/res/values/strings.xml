@@ -19,4 +19,6 @@
     <string name="task_priority">High prio</string>
     <string name="task_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laboret dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate…</string>
     <string name="task_progressbar">0% Done</string>
+    <string name="my_tasks">My Tasks</string>
+    <string name="create_new_task">Create new task</string>
 </resources>
