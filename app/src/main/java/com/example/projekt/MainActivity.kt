@@ -28,16 +28,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         // hide the navigation bar on the loginscreen
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.LoginFragment -> {
-                    bottomNavigationView.visibility = View.GONE
-                }
-                else -> {
-                    bottomNavigationView.visibility = View.VISIBLE
-                }
-            }
-        }
+        hideNavBars(bottomNavigationView, navController)
 
         // Read data from preferences
         val prefs = this.getPreferences(MODE_PRIVATE)
@@ -51,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             MyApplication.token = token!!
             MyApplication.email = prefs.getString("email","")!!
 
-            navController.navigate(R.id.ActivitiesFragment)
             fragmentNavigator()
         }
     }
@@ -60,9 +50,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.activities -> replaceFragment(ActivitiesFragment())
-                R.id.activities -> replaceFragment(ProfileFragment())
-                R.id.activities -> replaceFragment(TasksFragment())
-                R.id.activities -> replaceFragment(GroupsFragment())
+                R.id.profile -> replaceFragment(ProfileFragment())
+                R.id.tasks -> replaceFragment(TasksFragment())
+                R.id.groups -> replaceFragment(GroupsFragment())
             }
             true
         }
@@ -74,5 +64,19 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
+    }
+
+    private fun hideNavBars(bottomNavigationView: BottomNavigationView, navController: NavController) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.LoginFragment -> {
+                    bottomNavigationView.visibility = View.GONE
+                }
+                else -> {
+                    bottomNavigationView.visibility = View.VISIBLE
+                }
+            }
+        }
+
     }
 }
