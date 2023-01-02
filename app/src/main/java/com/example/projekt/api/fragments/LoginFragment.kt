@@ -67,6 +67,11 @@ class LoginFragment : Fragment() {
             } else {
                 // we need to serialize the request from a Java object to a Json format
                 loginViewModel.login(LoginRequest(email, password))
+                Toast.makeText(
+                    this.requireContext(),
+                    "Successful login!",
+                    Toast.LENGTH_LONG,
+                )
             }
         }
 

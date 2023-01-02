@@ -22,4 +22,6 @@
     <string name="my_tasks">My Tasks</string>
     <string name="create_new_task">Create new task</string>
     <string name="enter_task_name_here">Enter task name here</string>
+    <string name="edit_task">Edit task</string>
+    <string name="update">Update</string>
 </resources>
